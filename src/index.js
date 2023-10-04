@@ -55,6 +55,20 @@ app.get('/:id', async (req, res) => {
         res.send(error);
     }
 });
+app.delete('/remove/:id',async (req,res) => {
+    try {
+        await StudentsModel.deleteOne({_id : req.params.id})
+        res.status(201).send({
+            success: true,
+            message : "Student Detail was deleted successfully"
+        });
+    } catch (error) {
+        res.status(404).send({
+            success: true,
+            message : error
+        });
+    }
+});
 // application are listening no port number 3000
 app.listen(PORT, () => {
     console.log(`listening on http://localhost:${PORT}`);
