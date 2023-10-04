@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 
-const studentSchema = new mongoose.Schema({
+
+const StudentsModel = mongoose.model('students',{
     name : {
         type : String,
         required : true,
@@ -33,9 +34,11 @@ const studentSchema = new mongoose.Schema({
     address : {
         type : String,
         required : true,
+    },
+    isPremium : {
+        type : Boolean,
+        required : true
     }
 });
 
-const Students = new mongoose.model('students', studentSchema);
-
-module.exports = {Students}; 
+module.exports = {StudentsModel}; 
